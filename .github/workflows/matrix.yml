@@ -1,0 +1,24 @@
+# this workflow will run in a matrix 20 concurrent jobs to test scalability
+# it will output the time
+# checkout the repo
+# output the time again
+
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                twenty: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+        steps:
+        - name: Start
+          run: |
+            echo "Start time date is $(date)"
+        - uses: actions/checkout@v2
+        - name: stop
+          run: |
+            echo "Stop time date is $(date)"
